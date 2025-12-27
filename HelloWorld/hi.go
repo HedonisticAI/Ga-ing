@@ -1,18 +1,16 @@
-package main
+package helloworld
 
 import (
-	"log"
-
 	"github.com/hajimehoshi/ebiten/v2"
 	"github.com/hajimehoshi/ebiten/v2/ebitenutil"
 	"github.com/hajimehoshi/ebiten/v2/inpututil"
 )
 
-type Game struct {
+type SimpleGame struct {
 	keys []ebiten.Key
 }
 
-func (g *Game) Update() error {
+func (g *SimpleGame) Update() error {
 	g.keys = inpututil.AppendPressedKeys(g.keys[:0])
 	if inpututil.IsKeyJustPressed(ebiten.KeyEscape) {
 		return ebiten.Termination
@@ -20,7 +18,7 @@ func (g *Game) Update() error {
 	return nil
 }
 
-func (g *Game) Draw(screen *ebiten.Image) {
+func (g *SimpleGame) Draw(screen *ebiten.Image) {
 
 	for _, k := range g.keys {
 		switch k {
@@ -34,14 +32,6 @@ func (g *Game) Draw(screen *ebiten.Image) {
 	}
 }
 
-func (g *Game) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {
+func (g *SimpleGame) Layout(outsideWidth, outsideHeight int) (screenWidth, screenHeight int) {
 	return 320, 240
-}
-
-func main() {
-	ebiten.SetWindowSize(640, 480)
-	ebiten.SetWindowTitle("Hello, World!")
-	if err := ebiten.RunGame(&Game{}); err != nil {
-		log.Fatal(err)
-	}
 }
