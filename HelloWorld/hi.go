@@ -19,13 +19,15 @@ func (g *SimpleGame) Update() error {
 }
 
 func (g *SimpleGame) Draw(screen *ebiten.Image) {
-
 	for _, k := range g.keys {
 		switch k {
 		case ebiten.KeyT:
 			ebitenutil.DebugPrint(screen, "Thai")
 		case ebiten.KeyP:
 			ebitenutil.DebugPrint(screen, "Partiot")
+		case ebiten.KeyG:
+			ebitenutil.DebugPrint(screen, "GayKissing")
+			//screen.DrawImage(fin, op)
 		default:
 			ebitenutil.DebugPrint(screen, "Hello, World!")
 		}
